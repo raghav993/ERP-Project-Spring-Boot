@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<meta name="description" content="Smarthr - Bootstrap Admin Template">
+	<meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
+	<meta name="author" content="Dreamguys - Bootstrap Admin Template">
+	<meta name="robots" content="noindex, nofollow">
+	<title>Employee Profile</title>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.png">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+
+	<!-- Lineawesome CSS -->
+	<link rel="stylesheet" href="/assets/css/line-awesome.min.css">
+
+	<!-- Select2 CSS -->
+	<link rel="stylesheet" href="/assets/css/select2.min.css">
+
+	<!-- Datetimepicker CSS -->
+	<link rel="stylesheet" href="/assets/css/bootstrap-datetimepicker.min.css">
+
+	<!-- Tagsinput CSS -->
+	<link rel="stylesheet" href="/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css">
+
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="/assets/css/style.css">
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	<script src="/assets/js/html5shiv.min.js"></script>
+	<script src="/assets/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+<!-- Main Wrapper -->
+<div class="main-wrapper">
+
+	<!-- Header -->
+	<div class="header">
+
+		<!-- Logo -->
+		<div class="header-left">
+			<a href="/index.html" class="logo">
+				<img src="/assets/img/logo.png" width="40" height="40" alt="">
+			</a>
+		</div>
+		<!-- /Logo -->
+
+		<a id="toggle_btn" href="/javascript:void(0);">
+					<span class="bar-icon">
+						<span></span>
+						<span></span>
+						<span></span>
+					</span>
+		</a>
+
+		<!-- Header Title -->
+		<div class="page-title-box">
+			<h3>Enterprise resource planning</h3>
+		</div>
+		<!-- /Header Title -->
+
+		<a id="mobile_btn" class="mobile_btn" href="/#sidebar"><i class="fa fa-bars"></i></a>
+
+		<!-- Header Menu -->
+		<ul class="nav user-menu">
+			<li class="nav-item dropdown has-arrow main-drop">
+				<a href="/#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+							<span class="user-img">
+                                <img alt="" th:src="@{'/assets/img/profiles/' + ${user.getImageName()}}">
+							<span class="status online"></span></span>
+					<span th:text="${user.getFirst_Name() ?: 'ADMIN'}"></span>
+				</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" th:href="@{/profile.html/{id}(id=${user.getEmployeeID()})}">My Profile</a>
+					<a class="dropdown-item logout-link" href="/login.html">Logout</a>
+				</div>
+			</li>
+		</ul>
+		<!-- /Header Menu -->
+
+		<!-- Mobile Menu -->
+		<div class="dropdown mobile-user-menu">
+			<a href="/#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+			<div class="dropdown-menu dropdown-menu-right">
+				<a class="dropdown-item" th:href="@{/profile.html/{id}(id=${user.getEmployeeID()})}">My Profile</a>
+				<a class="dropdown-item logout-link" href="/login.html">Logout</a>
+			</div>
+		</div>
+		<!-- /Mobile Menu -->
+
+	</div>
+	<!-- /Header -->
+
+	<!-- Sidebar -->
+	<div class="sidebar" id="sidebar">
+		<div class="sidebar-inner slimscroll">
+			<div id="sidebar-menu" class="sidebar-menu">
+				<ul>
+					<li class="menu-title">
+						<span>Main</span>
+					</li>
+					<li class="submenu">
+						<a href="/#"><i class="la la-dashboard"></i> <span> Dashboard</span> <span class="menu-arrow"></span></a>
+						<ul style="display: none;">
+							<li><a href="/index.html">Admin Dashboard</a></li>
+						</ul>
+					</li>
+					<li class="menu-title">
+						<span>Employees</span>
+					</li>
+					<li class="submenu">
+						<a href="/#" class="noti-dot"><i class="la la-user"></i> <span> Employees</span> <span class="menu-arrow"></span></a>
+						<ul style="display: none;">
+							<li><a class="active" href="/employees.html">All Employees</a></li>
+							<li><a href="/holidays.html">Holidays</a></li>
+							<li><a href="/leaves.html">Leaves (Admin) <span class="badge badge-pill bg-primary float-right">1</span></a></li>
+							<li><a href="/leaves-employee.html">Leaves (Employee)</a></li>
+							<li><a href="/leave-type.html">Leave type</a></li>
+							<li><a href="/departments.html">Departments</a></li>
+							<li><a href="/designations.html">Designations</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="/clients.html"><i class="la la-users"></i> <span>Clients</span></a>
+					</li>
+					<li class="submenu">
+						<a href="/#"><i class="la la-rocket"></i> <span> Projects</span> <span class="menu-arrow"></span></a>
+						<ul style="display: none;">
+							<li><a href="/projects.html">Projects</a></li>
+						</ul>
+					</li>
+					<li class="menu-title">
+						<span>HR</span>
+					</li>
+					<li class="submenu">
+						<a href="/#"><i class="la la-files-o"></i> <span> Accounts </span> <span class="menu-arrow"></span></a>
+						<ul style="display: none;">
+							<li><a href="/estimates.html">Estimates</a></li>
+							<li><a href="/invoices.html">Invoices</a></li>
+							<li><a href="/payments.html">Payments</a></li>
+							<li><a href="/expenses.html">Expenses</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="/change-password.html"><i class="la la-lock"></i> <span>Change password</span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- /Sidebar -->
+
+	<!-- Page Wrapper -->
+	<div class="page-wrapper">
+
+		<!-- Page Content -->
+		<div class="content container-fluid">
+
+			<!-- Page Header -->
+			<div class="page-header">
+				<div class="row">
+					<div class="col-sm-12">
+						<h3 class="page-title">Profile</h3>
+						<ul class="breadcrumb">
+							<li class="breadcrumb-item"><a href="/index.html">Dashboard</a></li>
+							<li class="breadcrumb-item active">Profile</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- /Page Header -->
+
+			<div class="card mb-0">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="profile-view">
+								<div class="profile-img-wrap">
+									<div class="profile-img">
+										<img alt="" th:src="@{'/assets/img/profiles/' + ${employee.getImageName()}}">
+									</div>
+								</div>
+								<div class="profile-basic">
+									<div class="row">
+										<div class="col-md-5">
+											<div class="profile-info-left">
+												<h3 class="user-name m-t-0 mb-0" th:text="${employee.getFirst_Name()+' '+employee.getLast_Name()}">Employee Name</h3>
+												<h6 class="text-muted" th:text="${employee.getDepartement() ?: '.'}"></h6>
+												<small class="text-muted" th:text="${employee.getDesignation() ?: '.'}"></small>
+												<div class="staff-id" th:text="'Employee ID : E-'+${employee.getEmployeeID()}"></div>
+												<div class="small doj text-muted" th:text="'Date of Join : '+${employee.getJoinDate()}"></div>
+											</div>
+										</div>
+										<div class="col-md-7">
+											<ul class="personal-info">
+												<li>
+													<div class="title">Phone:</div>
+													<div class="text" th:text="${employee.getPhone() ?: '.'}"></div>
+												</li>
+												<li>
+													<div class="title">Email:</div>
+													<div class="text" th:text="${employee.getEmail() ?: '.'}"></div>
+												</li>
+												<li>
+													<div class="title">Birthday:</div>
+													<div class="text" th:text="${employee.getBirthday() ?: '.'}"></div>
+												</li>
+												<li>
+													<div class="title">Address:</div>
+													<div class="text" th:text="${employee.getAddress() ?: '.'}"></div>
+												</li>
+												<li>
+													<div class="title">Gender:</div>
+													<div class="text" th:text="${employee.getGender() ?: '.'}"></div>
+												</li>
+												<li>
+													<div class="title">State:</div>
+													<div class="text" th:text="${employee.getState() ?: '.'}"></div>
+												</li>
+												<li>
+													<div class="title">Country:</div>
+													<div class="text" th:text="${employee.getCountry() ?: '.'}"></div>
+												</li>
+												<li>
+													<div class="title">Pin code:</div>
+													<div class="text" th:text="${employee.getPinCode() ?: '.'}"></div>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="pro-edit"><a th:href="@{/employee/{id}(id=${employee.getEmployeeID()})}" th:data-employee-id="${employee.getEmployeeID()}" data-target="#profile_info" data-toggle="modal" class="edit-icon edit-link" href="/#"><i class="fa fa-pencil"></i></a></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="card tab-box">
+				<div class="row user-tabs">
+					<div class="col-lg-12 col-md-12 col-sm-12 line-tabs">
+						<ul class="nav nav-tabs nav-tabs-bottom">
+							<li class="nav-item"><a href="/#emp_projects" data-toggle="tab" class="nav-link active">Projects</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="tab-content">
+
+				<!-- Projects Tab -->
+				<div class="tab-pane fade show active" id="emp_projects">
+					<div class="row">
+
+						<div class="col-lg-4 col-sm-6 col-md-4 col-xl-3" th:each="project: ${projects}">
+							<div class="card">
+								<div class="card-body">
+									<h4 class="project-title"><a th:href="@{/project-view.html/{id}(id=${project.getProjectID()})}" th:text="${project.getProject_Name()}"></a></h4>
+									<small class="block text-ellipsis m-b-15">
+
+									</small>
+									<p class="text-muted" th:text="${project.getDescription()}">
+									</p>
+									<div class="pro-deadline m-b-15">
+										<div class="sub-title">
+											Deadline:
+										</div>
+										<div class="text-muted" th:text="${project.getEnd_Date()}">
+										</div>
+									</div>
+
+									<div class="project-members m-b-15">
+										<div>Project Leader :</div>
+										<ul class="team-members" th:each="leaderProject: ${project.getLeaderProjectDtoList()}">
+											<li>
+												<a th:href="@{/profile.html/{id}(id=${leaderProject.getLeaderID()})}" data-toggle="tooltip" th:title="${leaderProject.getFirst_Name() + ' ' + leaderProject.getLast_Name()}"><img alt="" th:src="@{'/assets/img/profiles/' + ${leaderProject.getImageName()}}"></a>
+											</li>
+										</ul>
+									</div>
+									<div class="project-members m-b-15">
+										<div>Team :</div>
+										<ul class="team-members">
+											<li class="dropdown avatar-dropdown">
+												<a href="/#" class="all-users dropdown-toggle" data-toggle="dropdown" aria-expanded="false">+15</a>
+												<div class="dropdown-menu dropdown-menu-right">
+													<div class="avatar-group" th:each="employeeProject: ${project.getEmployeeProjectDtoList()}">
+														<a th:href="@{/profile.html/{id}(id=${employeeProject.getEmployeeID()})}" class="avatar avatar-xs" th:title="${employeeProject.getFirst_Name() + ' ' + employeeProject.getLast_Name()}">
+															<img alt="" th:src="@{'/assets/img/profiles/' + ${employeeProject.getImageName()}}">
+														</a>
+													</div>
+													<div class="avatar-pagination">
+														<ul class="pagination">
+															<li class="page-item">
+																<a class="page-link" href="/#" aria-label="Previous">
+																	<span aria-hidden="true">«</span>
+																	<span class="sr-only">Previous</span>
+																</a>
+															</li>
+															<li class="page-item"><a class="page-link" href="/#">1</a></li>
+															<li class="page-item"><a class="page-link" href="/#">2</a></li>
+															<li class="page-item">
+																<a class="page-link" href="/#" aria-label="Next">
+																	<span aria-hidden="true">»</span>
+																	<span class="sr-only">Next</span>
+																</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<!-- /Projects Tab -->
+			</div>
+		</div>
+		<!-- /Page Content -->
+
+		<!-- Profile Modal -->
+		<div id="profile_info" class="modal custom-modal fade" role="dialog">
+			<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Profile Information</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form th:action="@{/employee/updateEmployeeMultipart}" method="POST" id="editForm" enctype="multipart/form-data">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="profile-img-wrap edit-img">
+										<img class="inline-block" th:src="@{'/assets/img/profiles/' + ${employee.getImageName()}}" alt="user">
+										<div class="fileupload btn">
+											<span class="btn-text">edit</span>
+											<input class="upload" type="file" name="imageFile">
+										</div>
+									</div>
+									<div class="row">
+										<input type="hidden" name="employeeID">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label>First Name</label>
+												<input type="text" class="form-control" name="first_Name">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label>Last Name</label>
+												<input type="text" class="form-control" name="last_Name">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label>Birth Date</label>
+												<div class="cal-icon">
+													<input class="form-control datetimepicker" type="text" name="birthday">
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label>Gender</label>
+												<select class="select form-control" name="gender">
+													<option value="">Select a gender</option>
+													<option value="Male">Male</option>
+													<option value="Female">Female</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Address</label>
+										<input type="text" class="form-control" name="address">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>State</label>
+										<input type="text" class="form-control" name="state">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Country</label>
+										<input type="text" class="form-control" name="country">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Pin Code</label>
+										<input type="text" class="form-control" name="pinCode">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Phone Number</label>
+										<input type="text" class="form-control" name="phone">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Department <span class="text-danger">*</span></label>
+										<select class="select" name="departement" id="departmentSelect1">
+											<option value="">Select a department</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Designation <span class="text-danger">*</span></label>
+										<select class="select" name="designation" id="designationSelect1">
+											<option value="">Select a designation</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="submit-section">
+								<button class="btn btn-primary submit-btn">Submit</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Profile Modal -->
+
+		<!-- Personal Info Modal -->
+		<div id="personal_info_modal" class="modal custom-modal fade" role="dialog">
+			<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Personal Information</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Passport No</label>
+										<input type="text" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Passport Expiry Date</label>
+										<div class="cal-icon">
+											<input class="form-control datetimepicker" type="text">
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Tel</label>
+										<input class="form-control" type="text">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Nationality <span class="text-danger">*</span></label>
+										<input class="form-control" type="text">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Religion</label>
+										<div class="cal-icon">
+											<input class="form-control" type="text">
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Marital status <span class="text-danger">*</span></label>
+										<select class="select form-control">
+											<option>-</option>
+											<option>Single</option>
+											<option>Married</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Employment of spouse</label>
+										<input class="form-control" type="text">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>No. of children </label>
+										<input class="form-control" type="text">
+									</div>
+								</div>
+							</div>
+							<div class="submit-section">
+								<button class="btn btn-primary submit-btn">Submit</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Personal Info Modal -->
+
+		<!-- Family Info Modal -->
+		<div id="family_info_modal" class="modal custom-modal fade" role="dialog">
+			<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title"> Family Informations</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="form-scroll">
+								<div class="card">
+									<div class="card-body">
+										<h3 class="card-title">Family Member <a href="/javascript:void(0);" class="delete-icon"><i class="fa fa-trash-o"></i></a></h3>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label>Name <span class="text-danger">*</span></label>
+													<input class="form-control" type="text">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<label>Relationship <span class="text-danger">*</span></label>
+													<input class="form-control" type="text">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<label>Date of birth <span class="text-danger">*</span></label>
+													<input class="form-control" type="text">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<label>Phone <span class="text-danger">*</span></label>
+													<input class="form-control" type="text">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="card">
+									<div class="card-body">
+										<h3 class="card-title">Education Informations <a href="/javascript:void(0);" class="delete-icon"><i class="fa fa-trash-o"></i></a></h3>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label>Name <span class="text-danger">*</span></label>
+													<input class="form-control" type="text">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<label>Relationship <span class="text-danger">*</span></label>
+													<input class="form-control" type="text">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<label>Date of birth <span class="text-danger">*</span></label>
+													<input class="form-control" type="text">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<label>Phone <span class="text-danger">*</span></label>
+													<input class="form-control" type="text">
+												</div>
+											</div>
+										</div>
+										<div class="add-more">
+											<a href="/javascript:void(0);"><i class="fa fa-plus-circle"></i> Add More</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="submit-section">
+								<button class="btn btn-primary submit-btn">Submit</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Family Info Modal -->
+
+		<!-- Emergency Contact Modal -->
+		<div id="emergency_contact_modal" class="modal custom-modal fade" role="dialog">
+			<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Personal Information</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="card">
+								<div class="card-body">
+									<h3 class="card-title">Primary Contact</h3>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label>Name <span class="text-danger">*</span></label>
+												<input type="text" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label>Relationship <span class="text-danger">*</span></label>
+												<input class="form-control" type="text">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label>Phone <span class="text-danger">*</span></label>
+												<input class="form-control" type="text">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label>Phone 2</label>
+												<input class="form-control" type="text">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="card">
+								<div class="card-body">
+									<h3 class="card-title">Primary Contact</h3>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label>Name <span class="text-danger">*</span></label>
+												<input type="text" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label>Relationship <span class="text-danger">*</span></label>
+												<input class="form-control" type="text">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label>Phone <span class="text-danger">*</span></label>
+												<input class="form-control" type="text">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label>Phone 2</label>
+												<input class="form-control" type="text">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="submit-section">
+								<button class="btn btn-primary submit-btn">Submit</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Emergency Contact Modal -->
+
+		<!-- Education Modal -->
+		<div id="education_info" class="modal custom-modal fade" role="dialog">
+			<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title"> Education Informations</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="form-scroll">
+								<div class="card">
+									<div class="card-body">
+										<h3 class="card-title">Education Informations <a href="/javascript:void(0);" class="delete-icon"><i class="fa fa-trash-o"></i></a></h3>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group form-focus focused">
+													<input type="text" value="Oxford University" class="form-control floating">
+													<label class="focus-label">Institution</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group form-focus focused">
+													<input type="text" value="Computer Science" class="form-control floating">
+													<label class="focus-label">Subject</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group form-focus focused">
+													<div class="cal-icon">
+														<input type="text" value="01/06/2002" class="form-control floating datetimepicker">
+													</div>
+													<label class="focus-label">Starting Date</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group form-focus focused">
+													<div class="cal-icon">
+														<input type="text" value="31/05/2006" class="form-control floating datetimepicker">
+													</div>
+													<label class="focus-label">Complete Date</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group form-focus focused">
+													<input type="text" value="BE Computer Science" class="form-control floating">
+													<label class="focus-label">Degree</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group form-focus focused">
+													<input type="text" value="Grade A" class="form-control floating">
+													<label class="focus-label">Grade</label>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="card">
+									<div class="card-body">
+										<h3 class="card-title">Education Informations <a href="/javascript:void(0);" class="delete-icon"><i class="fa fa-trash-o"></i></a></h3>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group form-focus focused">
+													<input type="text" value="Oxford University" class="form-control floating">
+													<label class="focus-label">Institution</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group form-focus focused">
+													<input type="text" value="Computer Science" class="form-control floating">
+													<label class="focus-label">Subject</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group form-focus focused">
+													<div class="cal-icon">
+														<input type="text" value="01/06/2002" class="form-control floating datetimepicker">
+													</div>
+													<label class="focus-label">Starting Date</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group form-focus focused">
+													<div class="cal-icon">
+														<input type="text" value="31/05/2006" class="form-control floating datetimepicker">
+													</div>
+													<label class="focus-label">Complete Date</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group form-focus focused">
+													<input type="text" value="BE Computer Science" class="form-control floating">
+													<label class="focus-label">Degree</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group form-focus focused">
+													<input type="text" value="Grade A" class="form-control floating">
+													<label class="focus-label">Grade</label>
+												</div>
+											</div>
+										</div>
+										<div class="add-more">
+											<a href="/javascript:void(0);"><i class="fa fa-plus-circle"></i> Add More</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="submit-section">
+								<button class="btn btn-primary submit-btn">Submit</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Education Modal -->
+
+		<!-- Experience Modal -->
+		<div id="experience_info" class="modal custom-modal fade" role="dialog">
+			<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Experience Informations</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="form-scroll">
+								<div class="card">
+									<div class="card-body">
+										<h3 class="card-title">Experience Informations <a href="/javascript:void(0);" class="delete-icon"><i class="fa fa-trash-o"></i></a></h3>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group form-focus">
+													<input type="text" class="form-control floating" value="Digital Devlopment Inc">
+													<label class="focus-label">Company Name</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group form-focus">
+													<input type="text" class="form-control floating" value="United States">
+													<label class="focus-label">Location</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group form-focus">
+													<input type="text" class="form-control floating" value="Web Developer">
+													<label class="focus-label">Job Position</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group form-focus">
+													<div class="cal-icon">
+														<input type="text" class="form-control floating datetimepicker" value="01/07/2007">
+													</div>
+													<label class="focus-label">Period From</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group form-focus">
+													<div class="cal-icon">
+														<input type="text" class="form-control floating datetimepicker" value="08/06/2018">
+													</div>
+													<label class="focus-label">Period To</label>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="card">
+									<div class="card-body">
+										<h3 class="card-title">Experience Informations <a href="/javascript:void(0);" class="delete-icon"><i class="fa fa-trash-o"></i></a></h3>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group form-focus">
+													<input type="text" class="form-control floating" value="Digital Devlopment Inc">
+													<label class="focus-label">Company Name</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group form-focus">
+													<input type="text" class="form-control floating" value="United States">
+													<label class="focus-label">Location</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group form-focus">
+													<input type="text" class="form-control floating" value="Web Developer">
+													<label class="focus-label">Job Position</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group form-focus">
+													<div class="cal-icon">
+														<input type="text" class="form-control floating datetimepicker" value="01/07/2007">
+													</div>
+													<label class="focus-label">Period From</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group form-focus">
+													<div class="cal-icon">
+														<input type="text" class="form-control floating datetimepicker" value="08/06/2018">
+													</div>
+													<label class="focus-label">Period To</label>
+												</div>
+											</div>
+										</div>
+										<div class="add-more">
+											<a href="/javascript:void(0);"><i class="fa fa-plus-circle"></i> Add More</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="submit-section">
+								<button class="btn btn-primary submit-btn">Submit</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Experience Modal -->
+
+	</div>
+	<!-- /Page Wrapper -->
+
+</div>
+<!-- /Main Wrapper -->
+
+<!-- jQuery -->
+<script src="/assets/js/jquery-3.2.1.min.js"></script>
+
+<!-- Bootstrap Core JS -->
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+
+<!-- Slimscroll JS -->
+<script src="/assets/js/jquery.slimscroll.min.js"></script>
+
+<!-- Select2 JS -->
+<script src="/assets/js/select2.min.js"></script>
+
+<!-- Datetimepicker JS -->
+<script src="/assets/js/moment.min.js"></script>
+<script src="/assets/js/bootstrap-datetimepicker.min.js"></script>
+
+<!-- Tagsinput JS -->
+<script src="/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
+
+<!-- Custom JS -->
+<script src="/assets/js/app.js"></script>
+
+<script>
+	// Retrieve the token from local storage
+	const token = localStorage.getItem("jwtToken");
+
+	// Before making authenticated requests, check if the token has expired
+	function isTokenExpired(token) {
+		if (!token) {
+			return true; // Token is missing or empty
+		}
+
+		const decodedToken = parseJwt(token);
+		const expirationTime = decodedToken.exp * 1000; // Convert to milliseconds
+
+		// Check if the current time is greater than or equal to the token's expiration time
+		return Date.now() >= expirationTime;
+	}
+
+	function parseJwt(token) {
+		// Decode the JWT token (assuming it's in the correct format)
+		const base64Url = token.split(".")[1];
+		const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+		return JSON.parse(atob(base64));
+	}
+
+	// Verify Token expiration
+	if (isTokenExpired(token)) {
+		// Token has expired, display an alert message and redirect to the login page
+		alert("Your session has expired. Please log in again.");
+		window.location.href = "/login.html";
+	} else {
+		// Token is still valid, proceed with the authenticated request
+
+		console.log("Token is valid.");
+	}
+
+	// Create headers object with the Authorization header
+	const headersAuth = {
+		'Authorization': `Bearer ${token}`
+	};
+</script>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		// Wait for the DOM to be fully loaded
+
+		// Select the <select> element
+		const departmentSelect1 = document.getElementById("departmentSelect1");
+		const designationSelect1 = document.getElementById("designationSelect1");
+
+		// Send a GET request to the endpoint
+		fetch('/department/all',{
+			headers: headersAuth
+		})
+				.then((response) => {
+					if (!response.ok) {
+						throw new Error("Network response was not ok");
+					}
+					return response.json();
+				})
+				.then((data) => {
+					// Iterate through the fetched data and populate the <select> element
+					data.forEach((department) => {
+						const option1 = document.createElement("option");
+						option1.value = department.departmentName;
+						option1.textContent = department.departmentName;
+
+						departmentSelect1.appendChild(option1);
+					});
+				})
+				.catch((error) => {
+					console.error("Fetch error:", error);
+				});
+
+		// Send a GET request to the endpoint
+		fetch('/designation/all',{
+			headers: headersAuth
+		})
+				.then((response) => {
+					if (!response.ok) {
+						throw new Error("Network response was not ok");
+					}
+					return response.json();
+				})
+				.then((data) => {
+					// Iterate through the fetched data and populate the <select> element
+					data.forEach((designation) => {
+						const option1 = document.createElement("option");
+						option1.value = designation.designationName;
+						option1.textContent = designation.designationName;
+
+						designationSelect1.appendChild(option1);
+					});
+				})
+				.catch((error) => {
+					console.error("Fetch error:", error);
+				});
+	});
+</script>
+
+
+
+<script th:inline="javascript">
+	// Edit Profile
+	// JavaScript to handle the AJAX call and pre-fill the form
+	var editForm = document.getElementById("editForm");
+
+	function populateFormWithData(employee) {
+		editForm.querySelector('[name=employeeID]').value = employee.employeeID;
+		editForm.querySelector('[name=first_Name]').value = employee.first_Name;
+		editForm.querySelector('[name=last_Name]').value = employee.last_Name;
+		editForm.querySelector('[name=birthday]').value = employee.birthday;
+		editForm.querySelector('[name=address]').value = employee.address;
+		editForm.querySelector('[name=state]').value = employee.state;
+		editForm.querySelector('[name=country]').value = employee.country;
+		editForm.querySelector('[name=pinCode]').value = employee.pinCode;
+		editForm.querySelector('[name=phone]').value = employee.phone;
+		editForm.querySelector('[name=departement]').value = employee.departement;
+		editForm.querySelector('[name=designation]').value = employee.designation;
+		editForm.querySelector('[name=gender]').value = employee.gender;
+
+		// Select the <select> element for department
+		var departmentSelect = editForm.querySelector('[name=departement]');
+		// Loop through the <select> options and set the selected attribute for the matching option
+		for (var i = 0; i < departmentSelect.options.length; i++) {
+			if (departmentSelect.options[i].value === employee.departement) {
+				departmentSelect.options[i].selected = true;
+				// Remove the default "Select a department" option
+				departmentSelect.querySelector('option[value=""]').remove();
+				break;
+			}
+		}
+
+		//
+		var designationSelect = editForm.querySelector('[name=designation]');
+		// Loop through the <select> options and set the selected attribute for the matching option
+		for (var i = 0; i < designationSelect.options.length; i++) {
+			if (designationSelect.options[i].value === employee.designation) {
+				designationSelect.options[i].selected = true;
+				// Remove the default "Select a department" option
+				designationSelect.querySelector('option[value=""]').remove();
+				break;
+			}
+		}
+
+		//
+		var genderSelect = editForm.querySelector('[name=gender]');
+		// Loop through the <select> options and set the selected attribute for the matching option
+		for (var i = 0; i < genderSelect.options.length; i++) {
+			if (genderSelect.options[i].value === employee.gender) {
+				genderSelect.options[i].selected = true;
+				// Remove the default "Select a department" option
+				genderSelect.querySelector('option[value=""]').remove();
+				break;
+			}
+		}
+	}
+
+	document.querySelectorAll(".edit-link").forEach(link => {
+		link.addEventListener("click", function(event) {
+			event.preventDefault();
+			var employeeId = link.getAttribute("data-employee-id");
+			fetch('/employee/' + employeeId, {
+				headers: headersAuth
+			})
+					.then(response => response.json())
+					.then(data => populateFormWithData(data))
+					.catch(error => console.error(error));
+		});
+	});
+
+	// Function to handle the file upload
+	function handleFileUpload(fileInput) {
+		const file = fileInput.files[0];
+		if (file) {
+			formData.append('imageFile', file);
+		}
+	}
+
+	// Add event listener to handle file selection
+	editForm.querySelector('[name=imageFile]').addEventListener('change', function(event) {
+		handleFileUpload(event.target);
+	});
+
+	// JavaScript to handle the form submission and page reload
+	editForm.addEventListener('submit', function(event) {
+		event.preventDefault();
+
+		/*
+		// Serialize the form data and file upload
+		formData.append('employeeID', editForm.querySelector('[name=employeeID]').value);
+		formData.append('first_Name', editForm.querySelector('[name=first_Name]').value);
+		formData.append('last_Name', editForm.querySelector('[name=last_Name]').value);
+		formData.append('birthday', editForm.querySelector('[name=birthday]').value);
+		formData.append('gender', editForm.querySelector('[name=gender]').value);
+		formData.append('address', editForm.querySelector('[name=address]').value);
+		formData.append('state', editForm.querySelector('[name=state]').value);
+		formData.append('country', editForm.querySelector('[name=country]').value);
+		formData.append('pinCode', editForm.querySelector('[name=pinCode]').value);
+		formData.append('phone', editForm.querySelector('[name=phone]').value);
+		formData.append('departement', editForm.querySelector('[name=departement]').value);
+		formData.append('designation', editForm.querySelector('[name=designation]').value);
+		formData.append('reportTo', editForm.querySelector('[name=reportTo]').value);
+		 */
+
+		// Serialize the form data and file upload
+		const formData = new FormData(editForm);
+
+		fetch(editForm.action, {
+			method: 'POST',
+			headers: headersAuth,
+			body: formData
+		})
+				.then(response => {
+					if (response.ok) {
+						window.location.reload(); // Reload the page after successful update
+					} else {
+						console.error('Error updating employee data.');
+					}
+				})
+				.catch(error => console.error(error));
+	});
+</script>
+
+
+<script>
+	// Select all elements with the class "logout-link" and attach the click event listener to each of them
+	const logoutLinks = document.querySelectorAll(".logout-link");
+
+	logoutLinks.forEach((logoutLink) => {
+		logoutLink.addEventListener("click", (event) => {
+			event.preventDefault(); // Prevent the link from navigating immediately
+
+			fetch("/logout/", {
+				method: "POST",
+				headers: headersAuth
+			})
+					.then((response) => {
+						if (response.ok) {
+							// Logout was successful, perform any additional client-side cleanup
+							localStorage.removeItem("jwtToken");
+							alert("Logout successful"); // Display a message to the user
+							window.location.href = '/login.html'; // Redirect to the login page
+						} else {
+							// Handle logout error
+							console.error("Logout failed");
+						}
+					})
+					.catch((error) => {
+						// Handle fetch or network error
+						console.error("Logout error:", error);
+					});
+		});
+	});
+</script>
+</body>
+</html>

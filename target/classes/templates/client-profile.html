@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<meta name="description" content="Smarthr - Bootstrap Admin Template">
+	<meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
+	<meta name="author" content="Dreamguys - Bootstrap Admin Template">
+	<meta name="robots" content="noindex, nofollow">
+	<title>Client Profile</title>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.png">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+
+	<!-- Lineawesome CSS -->
+	<link rel="stylesheet" href="/assets/css/line-awesome.min.css">
+
+	<!-- Datetimepicker CSS -->
+	<link rel="stylesheet" href="/assets/css/bootstrap-datetimepicker.min.css">
+
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="/assets/css/style.css">
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	<script src="/assets/js/html5shiv.min.js"></script>
+	<script src="/assets/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+<!-- Main Wrapper -->
+<div class="main-wrapper">
+
+	<!-- Header -->
+	<div class="header">
+
+		<!-- Logo -->
+		<div class="header-left">
+			<a href="/index.html" class="logo">
+				<img src="/assets/img/logo.png" width="40" height="40" alt="">
+			</a>
+		</div>
+		<!-- /Logo -->
+
+		<a id="toggle_btn" href="/javascript:void(0);">
+					<span class="bar-icon">
+						<span></span>
+						<span></span>
+						<span></span>
+					</span>
+		</a>
+
+		<!-- Header Title -->
+		<div class="page-title-box">
+			<h3>Enterprise resource planning</h3>
+		</div>
+		<!-- /Header Title -->
+
+		<a id="mobile_btn" class="mobile_btn" href="/#sidebar"><i class="fa fa-bars"></i></a>
+
+		<!-- Header Menu -->
+		<ul class="nav user-menu">
+			<li class="nav-item dropdown has-arrow main-drop">
+				<a href="/#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+							<span class="user-img">
+                                <img alt="" th:src="@{'/assets/img/profiles/' + ${user.getImageName()}}">
+							<span class="status online"></span></span>
+					<span th:text="${user.getFirst_Name() ?: 'ADMIN'}"></span>
+				</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" th:href="@{/profile.html/{id}(id=${user.getEmployeeID()})}">My Profile</a>
+					<a class="dropdown-item logout-link" href="/login.html">Logout</a>
+				</div>
+			</li>
+		</ul>
+		<!-- /Header Menu -->
+
+		<!-- Mobile Menu -->
+		<div class="dropdown mobile-user-menu">
+			<a href="/#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+			<div class="dropdown-menu dropdown-menu-right">
+				<a class="dropdown-item" th:href="@{/profile.html/{id}(id=${user.getEmployeeID()})}">My Profile</a>
+				<a class="dropdown-item logout-link" href="/login.html">Logout</a>
+			</div>
+		</div>
+		<!-- /Mobile Menu -->
+
+	</div>
+	<!-- /Header -->
+
+	<!-- Sidebar -->
+	<div class="sidebar" id="sidebar">
+		<div class="sidebar-inner slimscroll">
+			<div id="sidebar-menu" class="sidebar-menu">
+				<ul>
+					<li class="menu-title">
+						<span>Main</span>
+					</li>
+					<li class="submenu">
+						<a href="/#"><i class="la la-dashboard"></i> <span> Dashboard</span> <span class="menu-arrow"></span></a>
+						<ul style="display: none;">
+							<li><a href="/index.html">Admin Dashboard</a></li>
+						</ul>
+					</li>
+					<li class="menu-title">
+						<span>Employees</span>
+					</li>
+					<li class="submenu">
+						<a href="/#" class="noti-dot"><i class="la la-user"></i> <span> Employees</span> <span class="menu-arrow"></span></a>
+						<ul style="display: none;">
+							<li><a href="/employees.html">All Employees</a></li>
+							<li><a href="/holidays.html">Holidays</a></li>
+							<li><a href="/leaves.html">Leaves (Admin) <span class="badge badge-pill bg-primary float-right">1</span></a></li>
+							<li><a href="/leaves-employee.html">Leaves (Employee)</a></li>
+							<li><a href="/leave-type.html">Leave type</a></li>
+							<li><a href="/departments.html">Departments</a></li>
+							<li><a href="/designations.html">Designations</a></li>
+						</ul>
+					</li>
+					<li>
+						<a class="active" href="/clients.html"><i class="la la-users"></i> <span>Clients</span></a>
+					</li>
+					<li class="submenu">
+						<a href="/#"><i class="la la-rocket"></i> <span> Projects</span> <span class="menu-arrow"></span></a>
+						<ul style="display: none;">
+							<li><a href="/projects.html">Projects</a></li>
+						</ul>
+					</li>
+					<li class="menu-title">
+						<span>HR</span>
+					</li>
+					<li class="submenu">
+						<a href="/#"><i class="la la-files-o"></i> <span> Accounts </span> <span class="menu-arrow"></span></a>
+						<ul style="display: none;">
+							<li><a href="/estimates.html">Estimates</a></li>
+							<li><a href="/invoices.html">Invoices</a></li>
+							<li><a href="/payments.html">Payments</a></li>
+							<li><a href="/expenses.html">Expenses</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="/change-password.html"><i class="la la-lock"></i> <span>Change password</span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- /Sidebar -->
+
+	<!-- Page Wrapper -->
+	<div class="page-wrapper">
+
+		<!-- Page Content -->
+		<div class="content container-fluid">
+
+			<!-- Page Header -->
+			<div class="page-header">
+				<div class="row">
+					<div class="col-sm-12">
+						<h3 class="page-title">Profile</h3>
+						<ul class="breadcrumb">
+							<li class="breadcrumb-item"><a href="/index.html">Dashboard</a></li>
+							<li class="breadcrumb-item active">Profile</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- /Page Header -->
+
+			<div class="card mb-0">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="profile-view">
+								<div class="profile-img-wrap">
+									<div class="profile-img">
+										<img alt="" th:src="@{'/assets/img/profiles/' + ${client.getImageName()}}">
+									</div>
+								</div>
+								<div class="profile-basic">
+									<div class="row">
+										<div class="col-md-5">
+											<div class="profile-info-left">
+												<h3 class="user-name m-t-0" th:text="${client.getCompany_Name()}">Company Name</h3>
+												<h5 class="company-role m-t-0 mb-0" th:text="${client.getFirst_Name()+' '+client.getLast_Name()}"> First & Last Name</h5>
+												<small class="text-muted" th:text="${client.getDesignation()}">Designation</small>
+												<div class="staff-id" th:text="'Client ID : CLT-'+${client.getClientID()}">Client ID : CLT-0001</div>
+											</div>
+										</div>
+										<div class="col-md-7">
+											<ul class="personal-info">
+												<li>
+													<span class="title">Gender:</span>
+													<span class="text" th:text="${client.getGender() ?: 'Null'}"></span>
+												</li>
+												<li>
+													<span class="title">Personnel Phone:</span>
+													<span class="text" th:text="${client.getPersonnel_Phone() ?: 'Null'}"></span>
+												</li>
+												<li>
+													<span class="title">Personnel Email:</span>
+													<span class="text" th:text="${client.getPersonnel_Email() ?: 'Null'}"></span>
+												</li>
+												<li>
+													<span class="title">Company Name:</span>
+													<span class="text" th:text="${client.getCompany_Name() ?: 'Null'}"></span>
+												</li>
+												<li>
+													<span class="title">Date of Creation:</span>
+													<span class="text" th:text="${client.getDate_Creation() ?: 'Null'}"></span>
+												</li>
+												<li>
+													<span class="title">Address:</span>
+													<span class="text" th:text="${client.getAddress() ?: 'Null'}"></span>
+												</li>
+												<li>
+													<span class="title">ICE:</span>
+													<span class="text" th:text="${client.getIce() ?: 'Null'}"></span>
+												</li>
+												<li>
+													<span class="title">RC:</span>
+													<span class="text" th:text="${client.getRc() ?: 'Null'}"></span>
+												</li>
+												<li>
+													<span class="title">Ville:</span>
+													<span class="text" th:text="${client.getVille() ?: 'Null'}"></span>
+												</li>
+												<li>
+													<span class="title">Capital:</span>
+													<span class="text" th:text="${client.getCapital() ?: 'Null'}"></span>
+												</li>
+												<li>
+													<span class="title">RIB:</span>
+													<span class="text" th:text="${client.getRib() ?: 'Null'}"></span>
+												</li>
+												<li>
+													<span class="title">Company Email:</span>
+													<span class="text" th:text="${client.getCompany_Email() ?: 'Null'}"></span>
+												</li>
+												<li>
+													<span class="title">Company Phone:</span>
+													<span class="text" th:text="${client.getCompany_Phone() ?: 'Null'}"></span>
+												</li>
+												<li>
+													<span class="title">Website:</span>
+													<span class="text" th:text="${client.getWebsite() ?: 'Null'}"></span>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="pro-edit"><a th:href="@{/client/{id}(id=${client.getClientID()})}" th:data-client-id="${client.getClientID()}" data-target="#profile_info" data-toggle="modal" class="edit-icon edit-link" href="/#"><i class="fa fa-pencil"></i></a></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card tab-box">
+				<div class="row user-tabs">
+					<div class="col-lg-12 col-md-12 col-sm-12 line-tabs">
+						<ul class="nav nav-tabs nav-tabs-bottom">
+							<li class="nav-item col-sm-3"><a class="nav-link active" data-toggle="tab" href="/#myprojects">Projects</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="tab-content profile-tab-content">
+
+						<!-- Projects Tab -->
+						<div id="myprojects" class="tab-pane fade show active">
+							<div class="row">
+
+								<div class="col-lg-4 col-sm-6 col-md-4 col-xl-3" th:each="project: ${projects}">
+									<div class="card">
+										<div class="card-body">
+											<h4 class="project-title"><a th:href="@{/project-view.html/{id}(id=${project.getProjectID()})}" th:text="${project.getProject_Name()}"></a></h4>
+											<small class="block text-ellipsis m-b-15">
+
+											</small>
+											<p class="text-muted" th:text="${project.getDescription()}">
+											</p>
+											<div class="pro-deadline m-b-15">
+												<div class="sub-title">
+													Deadline:
+												</div>
+												<div class="text-muted" th:text="${project.getEnd_Date()}">
+												</div>
+											</div>
+
+											<div class="project-members m-b-15">
+												<div>Project Leader :</div>
+												<ul class="team-members" th:each="leaderProject: ${project.getLeaderProjectDtoList()}">
+													<li>
+														<a th:href="@{/profile.html/{id}(id=${leaderProject.getLeaderID()})}" data-toggle="tooltip" th:title="${leaderProject.getFirst_Name() + ' ' + leaderProject.getLast_Name()}"><img alt="" th:src="@{'/assets/img/profiles/' + ${leaderProject.getImageName()}}"></a>
+													</li>
+												</ul>
+											</div>
+											<div class="project-members m-b-15">
+												<div>Team :</div>
+												<ul class="team-members">
+													<li class="dropdown avatar-dropdown">
+														<a href="/#" class="all-users dropdown-toggle" data-toggle="dropdown" aria-expanded="false">+15</a>
+														<div class="dropdown-menu dropdown-menu-right">
+															<div class="avatar-group" th:each="employeeProject: ${project.getEmployeeProjectDtoList()}">
+																<a th:href="@{/profile.html/{id}(id=${employeeProject.getEmployeeID()})}" class="avatar avatar-xs" th:title="${employeeProject.getFirst_Name() + ' ' + employeeProject.getLast_Name()}">
+																	<img alt="" th:src="@{'/assets/img/profiles/' + ${employeeProject.getImageName()}}">
+																</a>
+															</div>
+															<div class="avatar-pagination">
+																<ul class="pagination">
+																	<li class="page-item">
+																		<a class="page-link" href="/#" aria-label="Previous">
+																			<span aria-hidden="true">«</span>
+																			<span class="sr-only">Previous</span>
+																		</a>
+																	</li>
+																	<li class="page-item"><a class="page-link" href="/#">1</a></li>
+																	<li class="page-item"><a class="page-link" href="/#">2</a></li>
+																	<li class="page-item">
+																		<a class="page-link" href="/#" aria-label="Next">
+																			<span aria-hidden="true">»</span>
+																			<span class="sr-only">Next</span>
+																		</a>
+																	</li>
+																</ul>
+															</div>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<!-- /Projects Tab -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Page Content -->
+
+		<!-- Profile Modal -->
+		<div id="profile_info" class="modal custom-modal fade" role="dialog">
+			<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Profile Information</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form th:action="@{/client/updateClientMultipart}" method="POST" id="editForm" enctype="multipart/form-data">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="profile-img-wrap edit-img">
+										<img class="inline-block" th:src="@{'/assets/img/profiles/' + ${client.getImageName()}}" alt="user">
+										<div class="fileupload btn">
+											<span class="btn-text">edit</span>
+											<input class="upload" type="file" name="imageFile">
+										</div>
+									</div>
+									<div class="row">
+										<input type="hidden" name="clientID">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="col-form-label">First Name <span class="text-danger">*</span></label>
+												<input class="form-control" type="text" name="first_Name">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="col-form-label">Last Name</label>
+												<input class="form-control" type="text" name="last_Name">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="col-form-label">Gender <span class="text-danger">*</span></label>
+												<input class="form-control floating" type="text" name="gender">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="col-form-label">Designation <span class="text-danger">*</span></label>
+												<input class="form-control" type="text" name="designation">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="col-form-label">Personnel Email <span class="text-danger">*</span></label>
+												<input class="form-control floating" type="email" name="personnel_Email">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="col-form-label">Personnel Phone </label>
+												<input class="form-control" type="text" name="personnel_Phone">
+											</div>
+										</div>
+
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="col-form-label">Company Name</label>
+												<input class="form-control" type="text" name="company_Name">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="col-form-label">Creation Date </label>
+												<div class="cal-icon">
+													<input class="form-control datetimepicker" type="text" name="date_Creation">
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="col-form-label">Address </label>
+												<input class="form-control" type="text" name="address">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="col-form-label">ICE </label>
+												<input class="form-control" type="text" name="ice">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="col-form-label">RC </label>
+												<input class="form-control" type="text" name="rc">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="col-form-label">Ville </label>
+												<input class="form-control" type="text" name="ville">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="col-form-label">Capital </label>
+												<input class="form-control" type="text" name="capital">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="col-form-label">RIB </label>
+												<input class="form-control" type="text" name="rib">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="col-form-label">Company Email </label>
+												<input class="form-control" type="text" name="company_Email">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="col-form-label">Company Phone </label>
+												<input class="form-control" type="text" name="company_Phone">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="col-form-label">Website </label>
+												<input class="form-control" type="text" name="website">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="submit-section">
+								<button class="btn btn-primary submit-btn" type="submit">Submit</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Profile Modal -->
+
+	</div>
+</div>
+<!-- /Main Wrapper -->
+
+<!-- jQuery -->
+<script src="/assets/js/jquery-3.2.1.min.js"></script>
+
+<!-- Bootstrap Core JS -->
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+
+<!-- Slimscroll JS -->
+<script src="/assets/js/jquery.slimscroll.min.js"></script>
+
+<!-- Select2 JS -->
+<script src="/assets/js/select2.min.js"></script>
+
+<!-- Datetimepicker JS -->
+<script src="/assets/js/moment.min.js"></script>
+<script src="/assets/js/bootstrap-datetimepicker.min.js"></script>
+
+<!-- Task JS -->
+<script src="/assets/js/task.js"></script>
+
+<!-- Custom JS -->
+<script src="/assets/js/app.js"></script>
+
+<script>
+	// Retrieve the token from local storage
+	const token = localStorage.getItem("jwtToken");
+
+	// Before making authenticated requests, check if the token has expired
+	function isTokenExpired(token) {
+		if (!token) {
+			return true; // Token is missing or empty
+		}
+
+		const decodedToken = parseJwt(token);
+		const expirationTime = decodedToken.exp * 1000; // Convert to milliseconds
+
+		// Check if the current time is greater than or equal to the token's expiration time
+		return Date.now() >= expirationTime;
+	}
+
+	function parseJwt(token) {
+		// Decode the JWT token (assuming it's in the correct format)
+		const base64Url = token.split(".")[1];
+		const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+		return JSON.parse(atob(base64));
+	}
+
+	// Verify Token expiration
+	if (isTokenExpired(token)) {
+		// Token has expired, display an alert message and redirect to the login page
+		alert("Your session has expired. Please log in again.");
+		window.location.href = "/login.html";
+	} else {
+		// Token is still valid, proceed with the authenticated request
+
+		console.log("Token is valid.");
+	}
+
+	// Create headers object with the Authorization header
+	const headersAuth = {
+		'Authorization': `Bearer ${token}`
+	};
+	// Create headers object with the Content-Type and Authorization headers
+	const headers = {
+		'Content-Type': 'application/x-www-form-urlencoded',
+		'Authorization': `Bearer ${token}`
+	};
+</script>
+
+
+<script th:inline="javascript">
+	// Edit Client Profile
+	// JavaScript to handle the AJAX call and pre-fill the form
+	var editForm = document.getElementById("editForm");
+
+	function populateFormWithData(client) {
+		editForm.querySelector('[name=clientID]').value = client.clientID;
+		editForm.querySelector('[name=first_Name]').value = client.first_Name;
+		editForm.querySelector('[name=last_Name]').value = client.last_Name;
+		editForm.querySelector('[name=gender]').value = client.gender;
+		editForm.querySelector('[name=designation]').value = client.designation;
+		editForm.querySelector('[name=personnel_Email]').value = client.personnel_Email;
+		editForm.querySelector('[name=personnel_Phone]').value = client.personnel_Phone;
+
+		editForm.querySelector('[name=company_Name]').value = client.company_Name;
+		editForm.querySelector('[name=date_Creation]').value = client.date_Creation;
+		editForm.querySelector('[name=address]').value = client.address;
+		editForm.querySelector('[name=ice]').value = client.ice;
+		editForm.querySelector('[name=rc]').value = client.rc;
+		editForm.querySelector('[name=ville]').value = client.ville;
+		editForm.querySelector('[name=capital]').value = client.capital;
+		editForm.querySelector('[name=rib]').value = client.rib;
+		editForm.querySelector('[name=company_Email]').value = client.company_Email;
+		editForm.querySelector('[name=company_Phone]').value = client.company_Phone;
+		editForm.querySelector('[name=website]').value = client.website;
+	}
+
+	document.querySelectorAll(".edit-link").forEach(link => {
+		link.addEventListener("click", function(event) {
+			event.preventDefault();
+			var employeeId = link.getAttribute("data-client-id");
+			fetch('/client/' + employeeId, {
+				headers: headersAuth
+			})
+					.then(response => response.json())
+					.then(data => populateFormWithData(data))
+					.catch(error => console.error(error));
+		});
+	});
+
+	// Function to handle the file upload
+	function handleFileUpload(fileInput) {
+		const file = fileInput.files[0];
+		if (file) {
+			formData.append('imageFile', file);
+		}
+	}
+
+	// Add event listener to handle file selection
+	editForm.querySelector('[name=imageFile]').addEventListener('change', function(event) {
+		handleFileUpload(event.target);
+	});
+
+	// JavaScript to handle the form submission and page reload
+	editForm.addEventListener('submit', function(event) {
+		event.preventDefault();
+
+		// Serialize the form data and file upload
+		const formData = new FormData(editForm);
+
+		fetch(editForm.action, {
+			method: 'POST',
+			headers: headersAuth,
+			body: formData
+		})
+				.then(response => {
+					if (response.ok) {
+						window.location.reload(); // Reload the page after successful update
+					} else {
+						console.error('Error updating client data.');
+					}
+				})
+				.catch(error => console.error(error));
+	});
+</script>
+
+
+<script>
+	// Select all elements with the class "logout-link" and attach the click event listener to each of them
+	const logoutLinks = document.querySelectorAll(".logout-link");
+
+	logoutLinks.forEach((logoutLink) => {
+		logoutLink.addEventListener("click", (event) => {
+			event.preventDefault(); // Prevent the link from navigating immediately
+
+			fetch("/logout/", {
+				method: "POST",
+				headers: headersAuth
+			})
+					.then((response) => {
+						if (response.ok) {
+							// Logout was successful, perform any additional client-side cleanup
+							localStorage.removeItem("jwtToken");
+							alert("Logout successful"); // Display a message to the user
+							window.location.href = '/login.html'; // Redirect to the login page
+						} else {
+							// Handle logout error
+							console.error("Logout failed");
+						}
+					})
+					.catch((error) => {
+						// Handle fetch or network error
+						console.error("Logout error:", error);
+					});
+		});
+	});
+</script>
+</body>
+</html>

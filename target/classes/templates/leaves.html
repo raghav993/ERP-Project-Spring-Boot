@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<meta name="description" content="Smarthr - Bootstrap Admin Template">
+	<meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
+	<meta name="author" content="Dreamguys - Bootstrap Admin Template">
+	<meta name="robots" content="noindex, nofollow">
+	<title>Leaves</title>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.png">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+
+	<!-- Lineawesome CSS -->
+	<link rel="stylesheet" href="/assets/css/line-awesome.min.css">
+
+	<!-- Datatable CSS -->
+	<link rel="stylesheet" href="/assets/css/dataTables.bootstrap4.min.css">
+
+	<!-- Select2 CSS -->
+	<link rel="stylesheet" href="/assets/css/select2.min.css">
+
+	<!-- Datetimepicker CSS -->
+	<link rel="stylesheet" href="/assets/css/bootstrap-datetimepicker.min.css">
+
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="/assets/css/style.css">
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	<script src="/assets/js/html5shiv.min.js"></script>
+	<script src="/assets/js/respond.min.js"></script>
+
+
+
+	<![endif]-->
+</head>
+<body>
+<!-- Main Wrapper -->
+<div class="main-wrapper">
+
+	<!-- Header -->
+	<div class="header">
+
+		<!-- Logo -->
+		<div class="header-left">
+			<a href="/index.html" class="logo">
+				<img src="/assets/img/logo.png" width="40" height="40" alt="">
+			</a>
+		</div>
+		<!-- /Logo -->
+
+		<a id="toggle_btn" href="/javascript:void(0);">
+					<span class="bar-icon">
+						<span></span>
+						<span></span>
+						<span></span>
+					</span>
+		</a>
+
+		<!-- Header Title -->
+		<div class="page-title-box">
+			<h3>Enterprise resource planning</h3>
+		</div>
+		<!-- /Header Title -->
+
+		<a id="mobile_btn" class="mobile_btn" href="/#sidebar"><i class="fa fa-bars"></i></a>
+
+		<!-- Header Menu -->
+		<ul class="nav user-menu">
+			<li class="nav-item dropdown has-arrow main-drop">
+				<a href="/#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+							<span class="user-img">
+                                <img alt="" th:src="@{'/assets/img/profiles/' + ${user.getImageName()}}">
+							<span class="status online"></span></span>
+					<span th:text="${user.getFirst_Name() ?: 'ADMIN'}"></span>
+				</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" th:href="@{/profile.html/{id}(id=${user.getEmployeeID()})}">My Profile</a>
+					<a class="dropdown-item logout-link" href="/login.html">Logout</a>
+				</div>
+			</li>
+		</ul>
+		<!-- /Header Menu -->
+
+		<!-- Mobile Menu -->
+		<div class="dropdown mobile-user-menu">
+			<a href="/#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+			<div class="dropdown-menu dropdown-menu-right">
+				<a class="dropdown-item" th:href="@{/profile.html/{id}(id=${user.getEmployeeID()})}">My Profile</a>
+				<a class="dropdown-item logout-link" href="/login.html">Logout</a>
+			</div>
+		</div>
+		<!-- /Mobile Menu -->
+
+	</div>
+	<!-- /Header -->
+
+	<!-- Sidebar -->
+	<div class="sidebar" id="sidebar">
+		<div class="sidebar-inner slimscroll">
+			<div id="sidebar-menu" class="sidebar-menu">
+				<ul>
+					<li class="menu-title">
+						<span>Main</span>
+					</li>
+					<li class="submenu">
+						<a href="/#"><i class="la la-dashboard"></i> <span> Dashboard</span> <span class="menu-arrow"></span></a>
+						<ul style="display: none;">
+							<li><a href="/index.html">Admin Dashboard</a></li>
+						</ul>
+					</li>
+					<li class="menu-title">
+						<span>Employees</span>
+					</li>
+					<li class="submenu">
+						<a href="/#" class="noti-dot"><i class="la la-user"></i> <span> Employees</span> <span class="menu-arrow"></span></a>
+						<ul style="display: none;">
+							<li><a href="/employees.html">All Employees</a></li>
+							<li><a href="/holidays.html">Holidays</a></li>
+							<li><a class="active" href="/leaves.html">Leaves (Admin) <span class="badge badge-pill bg-primary float-right">1</span></a></li>
+							<li><a href="/leaves-employee.html">Leaves (Employee)</a></li>
+							<li><a href="/leave-type.html">Leave type</a></li>
+							<li><a href="/departments.html">Departments</a></li>
+							<li><a href="/designations.html">Designations</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="/clients.html"><i class="la la-users"></i> <span>Clients</span></a>
+					</li>
+					<li class="submenu">
+						<a href="/#"><i class="la la-rocket"></i> <span> Projects</span> <span class="menu-arrow"></span></a>
+						<ul style="display: none;">
+							<li><a href="/projects.html">Projects</a></li>
+						</ul>
+					</li>
+					<li class="menu-title">
+						<span>HR</span>
+					</li>
+					<li class="submenu">
+						<a href="/#"><i class="la la-files-o"></i> <span> Accounts </span> <span class="menu-arrow"></span></a>
+						<ul style="display: none;">
+							<li><a href="/estimates.html">Estimates</a></li>
+							<li><a href="/invoices.html">Invoices</a></li>
+							<li><a href="/payments.html">Payments</a></li>
+							<li><a href="/expenses.html">Expenses</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="/change-password.html"><i class="la la-lock"></i> <span>Change password</span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- /Sidebar -->
+
+	<!-- Page Wrapper -->
+	<div class="page-wrapper">
+
+		<!-- Page Content -->
+		<div class="content container-fluid">
+
+			<!-- Page Header -->
+			<div class="page-header">
+				<div class="row align-items-center">
+					<div class="col">
+						<h3 class="page-title">Leaves</h3>
+						<ul class="breadcrumb">
+							<li class="breadcrumb-item"><a href="/index.html">Dashboard</a></li>
+							<li class="breadcrumb-item active">Leaves</li>
+						</ul>
+					</div>
+					<div class="col-auto float-right ml-auto">
+						<a href="/#" class="btn add-btn" data-toggle="modal" data-target="#add_leave"><i class="fa fa-plus"></i> Add Leave</a>
+					</div>
+				</div>
+			</div>
+			<!-- /Page Header -->
+
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-responsive">
+						<table class="table table-striped custom-table mb-0 datatable">
+							<thead>
+							<tr>
+								<th>Employee</th>
+								<th>Leave Type</th>
+								<th>From</th>
+								<th>To</th>
+								<th>No of Days</th>
+								<th>Reason</th>
+								<th class="text-center">Status</th>
+								<th>Approved by</th>
+								<th class="text-right">Actions</th>
+							</tr>
+							</thead>
+							<tbody>
+
+							<tr th:each="leave :${leaves}">
+								<td>EmployeeName</td>
+								<td th:text="${leave.getLeaveType()}" ></td>
+								<td th:text="${leave.getStartDate()}" ></td>
+								<td th:text="${leave.getEndDate()}"   ></td>
+								<td th:text="${leave.getNumberOfDays()}" ></td>
+								<td th:text="${leave.getLeaveReason()}" ></td>
+								<td class="text-center">
+									<div class="dropdown action-label">
+										<a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="/#" data-toggle="dropdown" aria-expanded="false">
+											<i th:class="${'fa fa-dot-circle-o ' + @statusHelper.getStatusColorClass(leave.getStatus())}"></i><span th:text="${leave.getStatus()}"></span>
+										</a>
+										<div class="dropdown-menu dropdown-menu-right">
+											<a class="dropdown-item pending-item" th:attr="data-id=${leave.getLeavesID()}" href="/#"><i class="fa fa-dot-circle-o  text-primary"></i> Pending</a>
+											<a class="dropdown-item approved-item" th:attr="data-id=${leave.getLeavesID()}" href="/#"><i class="fa fa-dot-circle-o text-success"></i> Approved</a>
+											<a class="dropdown-item declined-item"th:attr="data-id=${leave.getLeavesID()}"  href="/#"><i class="fa fa-dot-circle-o text-danger"></i> Declined</a>
+										</div>
+									</div>
+								</td>
+
+
+								<td>
+									<h2 class="table-avatar">
+										<a href="/#" th:text="${leave.getApprovedBy()}"></a>
+									</h2>
+								</td>
+								<td class="text-right">
+									<div class="dropdown dropdown-action">
+										<a href="/#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+										<div class="dropdown-menu dropdown-menu-right">
+											<a class="dropdown-item updateButton" href="/#" data-toggle="modal" data-target="#edit_leave" th:attr="data-id=${leave.getLeavesID()}"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+											<a class="dropdown-item deleteButton" href="/#" data-toggle="modal" data-target="#delete_approve" th:attr="data-id=${leave.getLeavesID()}"> <i class="fa fa-trash-o m-r-5"></i> Delete</a>
+										</div>
+									</div>
+								</td>
+							</tr>
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Page Content -->
+
+		<!-- Add Leave Modal -->
+		<div id="add_leave" class="modal custom-modal fade" role="dialog">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Add Leave</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form method="post" th:action="@{/leaves/create}" th:object="${oneLeave}">
+							<input type="hidden" name="activePage" value="leaves">
+
+							<div class="form-group">
+								<label>Leave Type <span class="text-danger">*</span></label>
+								<select class="select" id="leavesTypes" name="leavesType"  th:field="*{LeaveType}">
+									<option th:each="c : ${leavesTypes}" th:value="${c.getLeaveName()}" th:text="${c.getLeaveName()}"></option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label>From <span class="text-danger">*</span></label>
+								<div class="cal-icon">
+									<input class="form-control datetimepicker" type="text"  th:field="*{StartDate}">
+								</div>
+							</div>
+							<div class="form-group">
+								<label>To <span class="text-danger">*</span></label>
+								<div class="cal-icon">
+									<input class="form-control datetimepicker" type="text" th:field="*{EndDate}">
+								</div>
+							</div>
+							<div class="form-group">
+								<label>Number of days <span class="text-danger">*</span></label>
+								<input class="form-control"  type="text" th:field="*{NumberOfDays}">
+							</div>
+
+							<div class="form-group">
+								<label>Leave Reason <span class="text-danger">*</span></label>
+								<textarea rows="4" class="form-control" th:field="*{LeaveReason}"></textarea>
+							</div>
+
+							<div class="submit-section">
+								<button class="btn btn-primary submit-btn">Submit</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Add Leave Modal -->
+
+		<!-- Edit Leave Modal -->
+		<div id="edit_leave" class="modal custom-modal fade" role="dialog">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Edit Leave</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form  >
+							<div class="form-group">
+								<label>Leave Type <span class="text-danger">*</span></label>
+								<select class="select" id="input1" name="leavesType"  >
+									<option th:each="c : ${leavesTypes}" th:value="${c.getLeaveName()}" th:text="${c.getLeaveName()}"></option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label>From <span class="text-danger">*</span></label>
+								<div class="cal-icon">
+									<input class="form-control datetimepicker" id="input2" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label>To <span class="text-danger">*</span></label>
+								<div class="cal-icon">
+									<input class="form-control datetimepicker" id="input3" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label>Number of days <span class="text-danger">*</span></label>
+								<input class="form-control"  type="text" id="input0">
+							</div>
+
+							<div class="form-group">
+								<label>Leave Reason <span class="text-danger">*</span></label>
+								<textarea rows="4" class="form-control" id="input4"></textarea>
+							</div>
+							<div class="submit-section">
+								<button class="btn btn-primary submit-btn updateButton2">Save</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Edit Leave Modal -->
+
+		<!-- Delete Leave Modal -->
+		<div class="modal custom-modal fade" id="delete_approve" role="dialog">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-body">
+						<div class="form-header">
+							<h3>Delete Leave</h3>
+							<p>Are you sure want to Cancel this leave?</p>
+						</div>
+						<div class="modal-btn delete-action">
+							<div class="row">
+								<div class="col-6">
+									<a href="/javascript:void(0);" class="btn btn-primary continue-btn">Delete</a>
+								</div>
+								<div class="col-6">
+									<a href="/javascript:void(0);" data-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Delete Leave Modal -->
+
+	</div>
+	<!-- /Page Wrapper -->
+
+</div>
+<!-- /Main Wrapper -->
+<!-- /Main Wrapper -->
+
+<!-- jQuery -->
+<script src="/assets/js/jquery-3.2.1.min.js"></script>
+
+<!-- Bootstrap Core JS -->
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+
+<!-- Slimscroll JS -->
+<script src="/assets/js/jquery.slimscroll.min.js"></script>
+
+<!-- Select2 JS -->
+<script src="/assets/js/select2.min.js"></script>
+
+<!-- Datatable JS -->
+<script src="/assets/js/jquery.dataTables.min.js"></script>
+<script src="/assets/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- Datetimepicker JS -->
+<script src="/assets/js/moment.min.js"></script>
+<script src="/assets/js/bootstrap-datetimepicker.min.js"></script>
+
+<!-- Custom JS -->
+<script src="/assets/js/app.js"></script>
+
+
+<script>
+	// Retrieve the token from local storage
+	const token = localStorage.getItem("jwtToken");
+
+	// Before making authenticated requests, check if the token has expired
+	function isTokenExpired(token) {
+		if (!token) {
+			return true; // Token is missing or empty
+		}
+
+		const decodedToken = parseJwt(token);
+		const expirationTime = decodedToken.exp * 1000; // Convert to milliseconds
+
+		// Check if the current time is greater than or equal to the token's expiration time
+		return Date.now() >= expirationTime;
+	}
+
+	function parseJwt(token) {
+		// Decode the JWT token (assuming it's in the correct format)
+		const base64Url = token.split(".")[1];
+		const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+		return JSON.parse(atob(base64));
+	}
+
+	// Verify Token expiration
+	if (isTokenExpired(token)) {
+		// Token has expired, display an alert message and redirect to the login page
+		alert("Your session has expired. Please log in again.");
+		window.location.href = "/login.html";
+	} else {
+		// Token is still valid, proceed with the authenticated request
+
+		console.log("Token is valid.");
+	}
+
+	// Create headers object with the Authorization header
+	const headersAuth = {
+		'Authorization': `Bearer ${token}`
+	};
+	// Create headers object with the Content-Type and Authorization headers
+	const headers = {
+		'Content-Type': 'application/x-www-form-urlencoded',
+		'Authorization': `Bearer ${token}`
+	};
+</script>
+
+
+
+<script>
+	$('.deleteButton').click(function () {
+		var leaveID = $(this).attr("data-id");
+		$('.continue-btn').click(function () {
+
+			$.ajax({
+				url: '/leaves/delete/' + leaveID,
+				type: 'DELETE',
+				headers: headersAuth,
+				success: function (result) {
+					//alert('leaves with id ' + leaveID + ' deleted successfully');
+					$(this).parent().parent().remove();
+					window.location.reload();
+				}
+			})
+		});
+	});
+</script>
+
+
+<script>
+	$('.updateButton').click(function () {
+
+		var leaveID = $(this).attr("data-id");
+		var element =$(this).parent().parent().parent().parent()
+
+
+
+
+
+		$('#input1').val(element.find("td:eq(1)").text());
+		$('#input2').val(element.find("td:eq(2)").text());
+		$('#input3').val(element.find("td:eq(3)").text());
+		$('#input4').val(element.find("td:eq(5)").text());
+		$('#input0').val(element.find("td:eq(4)").text());
+
+
+		$('.updateButton2').click(function (){
+
+
+			$.ajax({
+				url: '/leaves/updateLeaves',
+				data:{
+					LeavesID:leaveID,
+					LeaveType : $('#input1').val(),
+					StartDate : $('#input2').val(),
+					EndDate: $('#input3').val(),
+					LeaveReason: $('#input4').val(),
+					NumberOfDays:$('#input0').val(),
+				},
+				type: 'PUT',
+				headers: headersAuth,
+				success: function(data) {
+					//alert('Item with id  updated successfully');
+					window.location.reload();
+				},
+				error : function (data) {
+					console.error("AJAX Error:", error);
+					alert('Error updating ');
+				}
+			});
+
+
+
+		});
+
+	});
+</script>
+<script>
+	$(document).ready(function() {
+
+
+		$('.pending-item').click(function() {
+			// Handle click on Pending item
+			// Example: Make an AJAX request or update UI
+			//alert('Pending item clicked');
+
+			var leaveID = $(this).attr("data-id");
+			// Ajax
+			$.ajax({
+				url: '/leaves/updateLeaves',
+				data:{
+					Status:"Pending",
+					LeavesID:leaveID,
+				},
+				type: 'PUT',
+				headers: headersAuth,
+				success: function(data) {
+					//alert('Item with id  updated successfully');
+					window.location.reload();
+				},
+				error : function (data) {
+					console.error("AJAX Error:", error);
+					alert('Error updating ');
+				}
+			});
+
+
+
+
+		});
+
+		$('.approved-item').click(function() {
+			// Handle click on Approved item
+			// Example: Make an AJAX request or update UI
+			//alert('Approved item clicked');
+			var leaveID = $(this).attr("data-id");
+			$.ajax({
+				url: '/leaves/updateLeaves',
+				data:{
+					Status:"Approved",
+					LeavesID:leaveID,
+				},
+				type: 'PUT',
+				headers: headersAuth,
+				success: function(data) {
+					//alert('Item with id  updated successfully');
+					window.location.reload();
+				},
+				error : function (data) {
+					console.error("AJAX Error:", error);
+					alert('Error updating ');
+				}
+			});
+
+		});
+
+		$('.declined-item').click(function() {
+			// Handle click on Declined item
+			// Example: Make an AJAX request or update UI
+			//alert('Declined item clicked');
+			var leaveID = $(this).attr("data-id");
+			$.ajax({
+				url: '/leaves/updateLeaves',
+				data:{
+					Status:"Declined",
+					LeavesID:leaveID,
+				},
+				type: 'PUT',
+				headers: headersAuth,
+				success: function(data) {
+					//alert('Item with id  updated successfully');
+					window.location.reload();
+				},
+				error : function (data) {
+					console.error("AJAX Error:", error);
+					alert('Error updating ');
+				}
+			});
+
+		});
+	});
+</script>
+
+
+<script>
+	// Select all elements with the class "logout-link" and attach the click event listener to each of them
+	const logoutLinks = document.querySelectorAll(".logout-link");
+
+	logoutLinks.forEach((logoutLink) => {
+		logoutLink.addEventListener("click", (event) => {
+			event.preventDefault(); // Prevent the link from navigating immediately
+
+			fetch("/logout/", {
+				method: "POST",
+				headers: headersAuth
+			})
+					.then((response) => {
+						if (response.ok) {
+							// Logout was successful, perform any additional client-side cleanup
+							localStorage.removeItem("jwtToken");
+							alert("Logout successful"); // Display a message to the user
+							window.location.href = '/login.html'; // Redirect to the login page
+						} else {
+							// Handle logout error
+							console.error("Logout failed");
+						}
+					})
+					.catch((error) => {
+						// Handle fetch or network error
+						console.error("Logout error:", error);
+					});
+		});
+	});
+</script>
+
+</body>
+</html>
