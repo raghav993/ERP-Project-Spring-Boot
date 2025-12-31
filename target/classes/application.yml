@@ -1,11 +1,12 @@
 spring:
   datasource:
-    url: ${DATABASE_URL}                # ← Render's internal URL goes here (most reliable)
+    # url: ${DATABASE_URL}                # ← Render's internal URL goes here (most reliable)
 
     # Alternative (if you prefer separate vars):
-    # url: jdbc:postgresql://${PGHOST}:${PGPORT}/${PGDATABASE}
-    # username: ${PGUSER}
-    # password: ${PGPASSWORD}
+
+    url: jdbc:postgresql://$$ {PGHOST}: $${PGPORT}/${PGDATABASE}
+    username: ${PGUSER}
+    password: ${PGPASSWORD}
 
     driver-class-name: org.postgresql.Driver   # required for Postgres
 
