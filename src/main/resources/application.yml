@@ -31,4 +31,4 @@ spring:
       static-locations: file:./src/main/resources/static/assets/
 
 server:
-  port: ${PORT:8081}                      # ← Render sets PORT automatically
+  port: ${PORT:8080}                      # ← Render sets PORT automatically
