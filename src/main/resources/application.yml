@@ -1,24 +1,34 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/db_erp?createDatabaseIfNotExist=true&userSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&jdbcCompliantTruncation=false
-    username: root
-    password:
+    url: ${DATABASE_URL}                # ← Render's internal URL goes here (most reliable)
+
+    # Alternative (if you prefer separate vars):
+    # url: jdbc:postgresql://${PGHOST}:${PGPORT}/${PGDATABASE}
+    # username: ${PGUSER}
+    # password: ${PGPASSWORD}
+
+    driver-class-name: org.postgresql.Driver   # required for Postgres
+
   jpa:
     hibernate:
-      ddlAuto: update
-    showSql: true
+      ddl-auto: update                    # or 'validate' in production after initial setup
+    show-sql: true
     properties:
       hibernate:
-        formatSql: true
-    database: mysql
+        dialect: org.hibernate.dialect.PostgreSQLDialect   # ← very important
+        format_sql: true
+
   servlet:
     multipart:
       max-file-size: 10MB
       max-request-size: 10MB
+
   mvc:
     static-path-pattern: /assets/**
+
   web:
     resources:
       static-locations: file:./src/main/resources/static/assets/
+
 server:
-  port: 8081
+  port: ${PORT:8081}                      # ← Render sets PORT automatically
