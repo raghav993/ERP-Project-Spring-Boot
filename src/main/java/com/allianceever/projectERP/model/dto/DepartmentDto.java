@@ -12,3 +12,4 @@ public class DepartmentDto {
     private Long departmentID;
     private String departmentName;
 }
+

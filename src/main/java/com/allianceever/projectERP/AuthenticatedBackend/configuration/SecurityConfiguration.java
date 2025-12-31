@@ -89,7 +89,7 @@ public class SecurityConfiguration {
                 auth.requestMatchers("/auth/delete/{id}").hasRole("ADMIN");
                 auth.requestMatchers("/employee/searchEmployees/{search}").authenticated(); // See again(change)
 
-                auth.requestMatchers("/profile.html/**").permitAll();
+                auth.requestMatchers("/profile.html").permitAll();
 
                 auth.requestMatchers("/holidays.html").permitAll();
                 auth.requestMatchers("/holiday/create").hasAnyRole("ADMIN", "Human_Capital");
@@ -243,7 +243,6 @@ public class SecurityConfiguration {
         JWKSource<SecurityContext> jwks = new ImmutableJWKSet<>(new JWKSet(jwk));
         return new NimbusJwtEncoder(jwks);
     }
-
     @Bean
     public JwtAuthenticationConverter jwtAuthenticationConverter(){
         JwtGrantedAuthoritiesConverter jwtGrantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();

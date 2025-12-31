@@ -63,9 +63,6 @@ public class DepartmentServiceImpl implements DepartmentService {
         departmentRepo.deleteById(DepartmentID);
     }
 
-
-
-
     // convert entity into DTO
     private DepartmentDto mapToDTO(Department department){
         DepartmentDto departmentDto = mapper.map(department, DepartmentDto.class);

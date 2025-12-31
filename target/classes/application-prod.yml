@@ -1,0 +1,27 @@
+spring:
+  config:
+    activate:
+      on-profile: prod           # activates only when SPRING_PROFILES_ACTIVE=prod
+
+  datasource:
+    url: ${DATABASE_URL}         # ← Render internal PostgreSQL URL (most reliable)
+    # Alternative formats (choose ONE):
+    # url: jdbc:postgresql://${PGHOST}:${PGPORT}/${PGDATABASE}
+    # username: ${PGUSER}
+    # password: ${PGPASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: validate         # safest for production (fail fast if schema mismatch)
+      # or: update (if you accept automatic schema changes – riskier)
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        # format_sql: true        # optional – disable in prod for performance
+
+  sql:
+    init:
+      mode: never                # prevent data.sql / schema.sql execution in prod
+
+server:
+  port: ${PORT:8080}             # Render provides PORT (required!)
